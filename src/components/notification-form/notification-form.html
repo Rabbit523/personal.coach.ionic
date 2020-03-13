@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+     <ion-buttons start>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()">
+          <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="container">
+    <form [formGroup]="notification_form">
+
+      <ion-card *ngIf="with_user?.fullname">
+        <ion-item>
+          <ion-avatar item-left>
+            <img [src]="with_user.picture| image:'url:profile'">
+          </ion-avatar>
+          <h2>{{with_user.fullname}}</h2>
+          <p>{{with_user.gym}}</p>
+        </ion-item>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-icon item-left name="information-circle-outline"></ion-icon>
+          <ion-textarea elastic-textarea formControlName="title" placeholder="Title"></ion-textarea>
+        </ion-item>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-icon item-left name="calendar-outline"></ion-icon>
+          <ion-datetime formControlName="start" placeholder="Date" pickerFormat="DD MMMM YYYY"></ion-datetime>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-row>
+          <ion-item col-7>
+            <ion-icon item-left name="clock-outline"></ion-icon>
+            <ion-datetime formControlName="start_time" placeholder="Start Time" pickerFormat="HH mm"></ion-datetime>
+          </ion-item>
+          <ion-item col-5>
+            <ion-datetime formControlName="end_time" placeholder="End Time" pickerFormat="HH mm"></ion-datetime>
+          </ion-item>
+        </ion-row>
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-icon item-left name="shuffle-outline"></ion-icon>
+          <ion-label>Recurring?</ion-label>
+          <ion-select formControlName="recurrence">
+            <ion-option [value]="recurrence.value" *ngFor="let recurrence of recurrences">{{recurrence.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-card>
+
+    </form>
+  </div>
+</ion-content>
+
+<div class="floating">
+  <button ion-button block gradient-left box-shadow (click)="save(notification_form)">Save Appointment</button>
+</div>

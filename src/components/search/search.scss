@@ -1,0 +1,42 @@
+search {
+  .container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    height: 90%;
+    .formidable {
+      text-transform: uppercase;
+      font-size: 3.6rem;
+      font-weight: 700!important;
+      color: color($colors, dark);
+      margin:0;
+      span{
+        font-size:1.8rem;
+        text-transform: lowercase;
+      }
+    }
+  ion-label[fixed] {
+    width: 30px!important;
+    min-width: 30px!important;
+    max-width: 90px!important;
+    text-transform: capitalize;
+}
+    .button {
+      margin-bottom: 25px;
+    }
+  }
+  .floating {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    padding: 0 20px;
+    z-index:99;
+    .button {
+      border-radius: 44px!important;
+    }
+  }
+}
+

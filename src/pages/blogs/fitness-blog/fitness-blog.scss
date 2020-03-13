@@ -1,0 +1,44 @@
+fitness-blog {
+  .blog-card {
+    ion-row {
+      ion-col {
+        padding: 0;
+        &:first-of-type {
+          background-size: cover;
+          background-position: center;
+        }
+        &:last-of-type {
+          padding: 15px 10px;
+          p {
+            font-size: 1.3rem;
+            text-align: left;
+          }
+          .actions {
+            ion-col {
+              padding: 0;
+              justify-content: center;
+              align-self: center;
+              &.date {
+                font-size: 1rem;
+                color: color($colors, default);
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+              }
+              span {
+                text-align: right;
+                padding: 0 2px;
+                color: color($colors, default);
+                ion-icon {
+                  color: color($colors, primary);
+                  padding-right: 2px;
+                  font-size: 2rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #3780FF, 
+  secondary:  #73A6FF, 
+  stable:     #546168, 
+  danger:     #EA3C3F,
+  default:    #899393, 
+  light:      #e5e5e5,
+  white:    #ffffff,
+  dark:       #191919, 
+  gold:    #EAE73C,
+  turquiose: #80F2BF
+);
+
+$font-family-ios-base: 'Poppins', sans-serif;
+$toolbar-ios-button-color: color($colors, white);
+$toolbar-ios-text-color: color($colors, white);
+$toolbar-ios-title-text-color: color($colors, white);
+$toolbar-ios-border-color: transparent;
+$tabs-background: lighten(color($colors, secondary), 23%);
+$menu-width:230px;
+$menu-ios-background: rgba(0,0,0, 1);
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

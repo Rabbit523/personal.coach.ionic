@@ -1,0 +1,21 @@
+mi-schedule {
+    .scroll-content {
+      overflow-y: hidden;
+    }
+    .toolbar{
+      box-shadow: none;
+      .toolbar-background{
+        background: color($colors, primary);
+      }
+    }
+  .floating {
+    position: fixed;
+    bottom: 40px;
+    width: 100%;
+    padding: 10px 30px;
+    z-index: 99;
+    .button {
+      border-radius: 44px!important;
+    }
+  }
+}

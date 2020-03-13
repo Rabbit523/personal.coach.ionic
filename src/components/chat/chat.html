@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title><img [src]="recipient?.picture | image: 'url: profile'" alt="">{{recipient?.fullname}}</ion-title>
+    <ion-buttons end>
+      <button ion-button>
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+      <button ion-button>
+          <ion-icon name="settings-outline"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding #content>
+  <div class="container">
+    <div *ngFor="let chat of _messages">
+      <div [ngClass]="chat.sender === mi.uid ? 'from-me': 'from-them'">
+        <p>{{chat.text}}</p>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer [keyboard-attach]="content">
+  <ion-toolbar class="custom-form">
+    <ion-item>
+      <ion-input name="message" placeholder="Type message here..." [formControl]="message"></ion-input>
+    </ion-item>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="send(message.value)">
+         <ion-icon name="send" color="primary" item-left></ion-icon> Send
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

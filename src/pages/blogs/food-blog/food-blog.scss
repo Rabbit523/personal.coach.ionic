@@ -1,0 +1,33 @@
+food-blog {
+  .blog-card {
+    .image {
+      height: 150px;
+      background-size: cover;
+      background-position: center;
+    }
+    .content {
+      text-align: justify;
+      padding: 10px 15px 0;
+    }
+    ion-row {
+      padding:0px 15px 10px;
+        ion-col {
+          padding: 0;
+          justify-content: center;
+          align-self: center;
+          &.date {
+            font-size: 1.1rem;
+            color: color($colors, default);
+          }
+          span {
+            padding: 6px;
+            color: color($colors, default);
+            ion-icon {color: color($colors, primary);
+              padding-right: 3px;
+              font-size: 2.2rem;
+            }
+          }
+        }
+      }
+  }
+}

@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="calendar" [ngClass]="options.display === 'light'? 'light': 'dark'" >
+    <!--<ion-toolbar>
+      <button ion-button menuToggle *ngIf="options.showMenu">
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+      <ion-buttons end>
+        <button *ngIf="options.navType === 'left' && !options.isPage" ion-button icon-only (click)="close()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        <button ion-button *ngIf="options.navType === 'left-right'" (click)="next()">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title>{{month.format("MMMM")}} <span class="title-accent">{{month.format("YYYY")}}</span></ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="previous()">
+          <ion-icon name="arrow-back"></ion-icon>
+          </button>
+        <button ion-button *ngIf="options.navType === 'left'" (click)="next()">
+          <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+      </ion-buttons>
+    </ion-toolbar>-->
+
+    <ion-row class="header">
+      <ion-col>
+        <button ion-button (click)="previous()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        <button ion-button *ngIf="options.navType === 'left'" (click)="next()">
+          <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+      </ion-col>
+      <ion-col><h2 class="title">{{month.format("MMMM")}} <span class="title-accent">{{month.format("YYYY")}}</span></h2></ion-col>
+      <ion-col>
+        <button *ngIf="options.navType === 'left' && !options.isPage" ion-button icon-only (click)="close()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <button ion-button *ngIf="options.navType === 'left-right'" (click)="next()">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="weeks">
+      <ion-col *ngFor="let item of weekDayNames">{{item | slice: 0: 3}}</ion-col>
+    </ion-row>
+    <div *ngIf="weeks">
+      <ion-row class="weekdays" *ngFor="let week of weeks">
+        <ion-col class="day" (click)="select(day)" *ngFor="let day of week.days">
+          <span [ngClass]="{'today': day.isToday, 'different-month': !day.isCurrentMonth, 'selected': day.date.isSame(selected) }">{{day.number}}</span>
+          <div *ngIf="options.showEventDots" class="calendar-events" [ngClass]="{'different-month': !day.isCurrentMonth}">
+            <span *ngFor="let events of day.events| slice: 0: 5" [ngClass]="{ 'has-events': day.events}">
+              <span class="event-ticks" [ngStyle]="{'backgroundColor': events.color}"></span>
+            </span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <!--Notifications Preview-->
+  <div class="list" *ngIf="options.showEvents">
+    <loading *ngIf="isLoading"></loading>
+
+    <div *ngIf="dayEvents?.length > 0; then dataTemplate else noDataTemplate"></div>
+
+    <ng-template #noDataTemplate>
+      <no-data></no-data>
+    </ng-template>
+
+    <ng-template #dataTemplate>
+      <h5>{{dayEvents?.length > 3 ? 'Fully booked on ' : 'Make an Appt on ' }}{{selected | amDateFormat:'LL'}}</h5>
+      <div class="scroll">
+        <ion-card *ngFor="let event of dayEvents; let i= index">
+          <ion-item [style.border-left-color]="event.color" text-wrap (click)="open(event)">
+            <h2>{{event.title}}</h2>
+            <p>{{event.start | date: 'shortTime'}} - {{event.end | date: 'shortTime'}}</p>
+            <ion-icon item-right name="arrow-forward"></ion-icon>
+          </ion-item>
+        </ion-card>
+        <p (click)="openNotifications(selected)">See More</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

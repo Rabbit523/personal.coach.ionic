@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <loading *ngIf="isLoading"></loading>
+  <div class="container custom-floating-form" *ngIf="!isLoading">
+      <div class="user-image">
+        <img [src]="mi?.picture | image: 'url:profile'">
+      </div>
+       <h2>{{mi?.fullname}}</h2>
+
+      <div class="scroll">
+        <ion-card class="profile">
+          <ion-row>
+            <ion-col>gender  <p>{{mi.gender}}</p></ion-col>
+            <ion-col>age <p>{{age}}</p></ion-col>
+            <ion-col>weight <p>{{mi.weight}}kg</p></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>height <p>{{mi.height}}cm</p></ion-col>
+            <ion-col>BMI<p>{{mi.bmi}}%</p></ion-col>
+            <ion-col>Body Fat <p>{{mi.bfp}}%</p></ion-col>
+          </ion-row>
+        </ion-card>
+        <ion-card class="about">
+          <h2>About Me</h2>
+          <p>{{mi.about ? mi.about : 'No content added yet'}}</p>
+        </ion-card>
+      </div>
+  </div>
+</ion-content>
+

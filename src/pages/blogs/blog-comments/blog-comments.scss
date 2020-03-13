@@ -1,0 +1,77 @@
+blog-comments {
+  .container {
+    .user-card {
+      border: 1px solid color($colors, light);
+      margin: 10px;
+      border-radius: 6px;
+      padding: 10px 5px 10px 15px;
+      width: calc(100% -2px);
+      .image {
+        float: left;
+        width: 50px;
+        height: 50px;
+        img {
+          border-radius: 100%;
+        }
+      }
+      .desc {
+        width: 75%;
+        padding-left: 10px;
+        display: inline-block;
+        h2 {
+          margin: 0 0 5px;
+          font-size: 1.4rem;
+          font-weight: 500 !important;
+        }
+        p {
+          margin: 0;
+          font-size: 1.2rem;
+        }
+        .date {
+          float: right;
+          color: color($colors, primary);
+        }
+      }
+      .actions {
+        padding-left: 5px;
+        width: 20px;
+        float: right;
+        color: color($colors, danger);
+      }
+    }
+  }
+  ion-footer {
+    .toolbar-background {
+      background: color($colors, light) !important;
+    }
+    border-top: 2px solid color($colors, primary);
+    .bar-buttons[start] {
+      -webkit-order: 4;
+      -ms-flex-order: 4;
+      order: 1;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      ion-icon {
+        font-size: 3rem;
+      }
+    }
+    .bar-buttons[end] {
+      ion-icon {
+        font-size: 3rem;
+        padding-right: 5px;
+      }
+      span {
+        font-size: 1.6rem;
+      }
+    }
+    ion-item {
+      margin-left: 10px!important;
+      width: 96%!important;
+      margin-bottom: 0px!important;
+      background: transparent !important;
+      .input-wrapper {
+        background: color($colors, white) !important;
+      }
+    }
+  }
+}

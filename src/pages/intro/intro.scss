@@ -1,0 +1,54 @@
+intro {
+  .scroll-content {
+    overflow-y: hidden;
+  }
+  .container {
+    .formidable {
+      text-transform: capitalize;
+      font-size: 3.6rem;
+      font-weight: 700!important;
+      color: color($colors, dark);
+      margin-bottom: 10px;
+    }
+    .formidable-light {
+      text-transform: uppercase;
+      font-size: 2.6rem;
+      font-weight: 700!important;
+      color: color($colors, default);
+      margin-top: 10px;
+    }
+    .menu {
+      ion-row {
+        ion-col {
+          padding: 0;
+          &:first-of-type {
+            margin-right: 10px;
+          }
+          &:last-of-type {
+            padding-left: 10px;
+          }
+          ion-card {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            text-align: right;
+            height: 120px;
+            background: color($colors, light);
+            img {
+              width: 50px;
+            }
+            .desc {
+              margin-top: 10px;
+              h2 {
+                color: color($colors, stable);
+              }
+              p {
+                color: color($colors, default);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

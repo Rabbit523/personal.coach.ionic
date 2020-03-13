@@ -1,0 +1,93 @@
+notification-form {
+  .container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    ion-card {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid color($colors, light);
+      box-shadow: -5px 12px 15px -12px color($colors, default);
+      ;
+      ion-avatar {
+          left:-10px;
+        img {
+          padding: 2px;
+          width: 70px;
+          height: 70px;
+          border: 2px solid color($colors, primary);
+        }
+      }
+       h2 {
+        font-weight: 500!important;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color:color($colors, dark);
+      }
+      ion-item {
+        ion-icon[item-left] {
+          font-size: 3rem;
+          font-weight: 600 !important;
+          color: color($colors, primary);
+        }
+        ion-label {
+          overflow: unset;
+          margin: 0!important;
+          color: color($colors, default);
+          font-weight: 300 !important;
+          font-size: 1.6rem;
+        }
+        .select-text,
+        .datetime-text {
+          font-weight: 300 !important;
+          font-size: 1.6rem;
+        }
+        ion-select {
+          width: 95%;
+          max-width: 95%;
+          .select-icon {
+            text-align: right;
+            width: 12px;
+            height: 28px;
+            .select-icon-inner {
+              left: unset;
+              top: unset;
+              position: absolute;
+              margin-top: unset;
+              width: 0;
+              height: 0;
+              border: none;
+              color: unset;
+              pointer-events: none;
+              &::after {
+                line-height: 3rem;
+                font-size: 2.4rem;
+                content: '\f3d0';
+                font-family: 'Ionicons';
+                color: color($colors, default);
+              }
+            }
+          }
+        }
+        ion-datetime,
+        ion-select {
+          padding-top: 0;
+          padding-left: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+  .floating {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    padding: 10px 20px;
+    z-index: 99;
+    .button {
+      border-radius: 44px!important;
+    }
+  }
+}

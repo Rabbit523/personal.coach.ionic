@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title>Reads</ion-title>
+    <ion-buttons end>
+      <button ion-button>
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+      <button ion-button>
+          <ion-icon name="settings-outline"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <loading *ngIf="isLoading"></loading>
+
+  <div *ngIf="!isLoading">
+    <div *ngIf="blogs?.length > 0; then dataTemplate else noDataTemplate"></div>
+
+    <ng-template #noDataTemplate>
+      <no-data></no-data>
+    </ng-template>
+
+    <ng-template #dataTemplate>
+      <ion-card class="blog-card" *ngFor="let blog of blogs">
+        <div class="image" *ngIf="blog?.images?.length > 0" (click)="open(blog)" [style.background-image]="'url(' + blog?.images[0] + ')' | image: 'style: placeholder'"></div>
+        <div class="content" (click)="open(blog)">
+          <p>{{blog.content| slice: 0: 140}}</p>
+          {{blog.type}}
+        </div>
+        <ion-row>
+          <ion-col col-4 class="date">{{blog.created_at | amTimeAgo}}</ion-col>
+          <ion-col text-right>
+            <span (click)="like(blog)"><ion-icon [name]="likedByUser(blog) ? 'heart' : 'heart-outline'"></ion-icon>{{blog?.likes_count > 0 ? blog?.likes_count : ''}}</span>
+            <span (click)="comment(blog)"><ion-icon name="quote-outline"></ion-icon>{{blog?.comments_count > 0 ? blog?.comments_count : ''}}</span>
+            <span (click)="bookmark(blog)"><ion-icon name="bookmark-outline"></ion-icon></span>
+            <span (click)="share(blog)"><ion-icon name="md-share"></ion-icon></span>
+            <span (click)="delete(blog)" *ngIf="blog?.user?.uid === mi.uid"><ion-icon name="trash" color="danger"></ion-icon></span>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ng-template>
+  </div>
+
+</ion-content>

@@ -1,0 +1,41 @@
+mi-goals {
+  ion-card {
+    position: relative;
+    ion-card-header {
+      background: lighten(color($colors, secondary), 15);
+      padding: 8px 16px!important;
+      border-bottom: 2px solid lighten(color($colors, primary), 20);
+      ion-icon.title {
+        width: 30px;
+        height: 30px;
+        font-size: 2rem;
+        color: color($colors, stable);
+        border: 3px solid color($colors, primary);
+        line-height: 2.5rem;
+        text-align: center;
+        border-radius: 100%;
+        margin-right: 5px;
+      }
+      ion-fab {
+        margin-top: 8px;
+        position: absolute;
+        .fab-ios {
+          background: color($colors, secondary);
+          border: 1px solid lighten(color($colors, primary), 10);
+        }
+        ion-icon {
+          color: color($colors, white);
+        }
+      }
+    }
+    ion-card-content {
+      .info {
+        padding: 10px 0;
+        .label {
+          font-weight: 600!important;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}

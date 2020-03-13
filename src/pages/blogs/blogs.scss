@@ -1,0 +1,47 @@
+page-blogs {
+  .scroll-content{
+    overflow-y: hidden;
+  }
+  .container {
+    .top {
+      .toolbar {
+        box-shadow: none;
+        height: 44px;
+        .toolbar-background {
+          background: transparent !important;
+        }
+        .segments {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          text-align: center;
+          .segment {
+            width: 100%;
+            font-size: 1.4rem;
+            color: color($colors, white);
+            text-transform: capitalize;
+            padding-top: 6px;
+            &::after {
+              content: '';
+              display: block;
+              width: 0;
+              height: 2px;
+              margin-top: 7px;
+              background: color($colors, white);
+              transition: width .3s;
+            }
+            &.active::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .blog-content{
+      overflow-y: auto;
+      position: absolute;
+      width:100%;
+      height: calc(100% - 88px);
+    }
+  }
+}

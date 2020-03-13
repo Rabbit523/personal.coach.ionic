@@ -1,0 +1,29 @@
+notifications {
+ion-card{
+    ion-row{
+        ion-col{
+            padding:0;
+            justify-content: center;
+             align-self: center;
+            &:first-of-type{
+                font-size:3rem;
+                padding:15px;
+                text-align: center;
+                border-right: 1px solid color($colors,light);
+                border-left: 5px solid;
+                p{
+                    margin-top:-10px
+                }
+            }
+            &:last-of-type{
+                padding:15px;
+                h2{
+                    font-size:1.6rem;
+                    font-weight: 500!important;
+                }
+            }
+        }
+        
+    }
+}
+}

@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title><img src="./assets/coach-lite.png"></ion-title>
+    <ion-buttons end>
+      <button ion-button>
+          <ion-icon name="mail-outline"></ion-icon>
+      </button>
+      <button ion-button (click)="openNotifications()">
+          <ion-icon name="notifications-outline"></ion-icon>
+      </button>
+      <button ion-button (click)="openMe()">
+          <ion-icon name="person-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="container">
+    <p class="formidable">Hello {{mi?.fullname ? mi?.fullname.split(' ')[0] : 'there'}},</p>
+    <p class="formidable-light">how can we help you stay fit?</p>
+
+    <ion-grid class="menu">
+      <ion-row *ngFor="let i of rows;">
+        <ion-col *ngFor="let menu of menus | slice:(i*2):(i+1)*2">
+          <ion-card (click)="open(menu)">
+            <img [src]="menu.icon" alt="">
+            <div class="desc">
+              <h2 [innerHTML]="menu.head"></h2>
+              <p [innerHTML]="menu.sub"></p>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

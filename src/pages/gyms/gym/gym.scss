@@ -1,0 +1,91 @@
+gym {
+  .scroll-content {
+    overflow-y: hidden;
+  }
+  .container {
+    .top {
+      height: 350px;
+      .toolbar {
+        height: 44px;
+        box-shadow: none !important;
+        .toolbar-background {
+          background: transparent !important;
+        }
+        button {
+          padding-left: 4px;
+          padding-right: 4px;
+          width: 18px;
+        }
+      }
+      .image {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding:0 20px;
+        img {
+          width: 90px;
+          height: 90px;
+          border-radius: 100%;
+          margin: 2% auto 2%;
+          background: color($colors, white);
+          border: 3px solid color($colors, default);
+          padding: 5px;
+        }
+        h2,
+        p {
+          color: color($colors, white);
+          margin: 5px 0 0;
+        }
+        h2 {
+          font-size: 1.6rem;
+          font-weight: 500!important;
+        }
+        p {
+          font-size: 1.3rem;
+        }
+        .button {
+          color: color($colors, dark);
+          margin: 20px 40px 0;
+          border-radius: 44px !important;
+           background: linear-gradient(to right, lighten(color($colors, turquiose), 5%) 3%, lighten(color($colors, turquiose), 5%) 6%, lighten(color($colors, turquiose), 5%) 8%, color($colors, turquiose) 93%, color($colors, turquiose) 83%);
+        }
+      }
+    }
+    .bottom {
+      overflow-y: scroll;
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      height: 95vw;
+      padding: 0 20px;
+      ion-card {
+        padding: 15px 15px 0;
+        h4 {
+          font-weight: 600!important;
+        }
+        p {
+          font-size: 1.2rem;
+          text-align: justify;
+        }
+        .contact {
+          margin: 10px -15px 0;
+          border-top: 1px solid color($colors, light);
+          ion-col {
+            text-align: center;
+            ion-icon {
+              font-size: 2.8rem;
+              color: color($colors, primary);
+            }
+          }
+        }
+      }
+      .members {
+        padding: 10px;
+        img {
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+}

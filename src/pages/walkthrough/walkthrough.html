@@ -1,0 +1,24 @@
+<ion-content>
+  <ion-slides #slider pager (ionSlideDidChange)="slideChanged()">
+    <ion-slide *ngFor="let slide of slides">
+      <div class="wrap">
+        <img [src]="slide.image">
+        <h1 [innerHTML]="slide.title"></h1>
+        <p [innerHTML]="slide.paragraph"></p>
+        <i class="fa fa-lock"></i>
+        <button ion-button gradient-left box-shadow *ngIf="slide.button" (click)="slide.button.click()">{{slide.button.text}}</button>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+  <div class="buttons">
+    <button (click)="previous()" ion-button box-shadow [attr.gradient-left]="currentSlideIndex > 0 ? true: null" color="default" [attr.greydient-left]="currentSlideIndex == 0 ? true : null"
+      [outline]="currentSlideIndex == 0 ? true : null" pull-left>
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <button (click)="next()" ion-button box-shadow [attr.gradient-right]="currentSlideIndex < slides.length - 1 ? true: null" color="default" [attr.greydient-left]="currentSlideIndex == slides.length - 1 ? true : null"
+      [outline]="currentSlideIndex == slides.length - 1 ? true : null" pull-right>
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </div>
+</ion-content>

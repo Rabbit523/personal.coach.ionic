@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title>Mi Schedule</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <calendar [options]="cal_options" [user]="user" (events)="onEventsChange($event)"></calendar>
+</ion-content>
+
+<div class="floating">
+  <button ion-button block gradient-left box-shadow (click)="createNotification(selected_day?.day)">Create a Notification</button>
+</div>

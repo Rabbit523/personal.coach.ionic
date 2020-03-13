@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar [ngClass]="{'dark': blog?.images?.length < 1}">
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title>blog</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!--Styles available based on if the blog has an image or not.
+'dark' class is applied to toolbar, giving it a gradient color 
+when no image is available for the post and 'no-image' class is 
+applied to the 'blog-card' class to allow extra padding for the 
+content section of the page-->
+<ion-content>
+  <div class="blog-card" [ngClass]="{'no-image': blog?.images?.length < 1}">
+    <ion-slides slidesPerView="1" *ngIf="blog?.images?.length > 0" box-shadow>
+      <ion-slide *ngFor="let image of blog.images" [style.background-image]="'url(' + image + ')' | image: 'style: placeholder'">
+      </ion-slide>
+    </ion-slides>
+    <div class="blog-type" *ngIf="blog?.images?.length > 0" gradient-left box-shadow>
+      {{blog.type}}
+    </div>
+    <div class="content" (click)="open(blog)">
+      <h2>{{blog.title}}</h2>
+      <p>{{blog.content}}</p>
+      <div class="blog-type" *ngIf="blog?.images?.length < 0" gradient-left box-shadow>
+      {{blog.type}}
+    </div>
+    </div>
+    <ion-row>
+      <ion-col class="date">{{blog.created_at | amTimeAgo}}</ion-col>
+      <ion-col text-right>
+        <span (click)="like(blog)"><ion-icon [name]="likedByUser(blog) ? 'heart' : 'heart-outline'"></ion-icon>{{blog?.likes_count > 0 ? blog?.likes_count : ''}}</span>
+        <span (click)="comment(blog)"><ion-icon name="quote-outline"></ion-icon>{{blog?.comments_count > 0 ? blog?.comments_count : ''}}</span>
+        <span (click)="bookmark(blog)"><ion-icon name="bookmark-outline"></ion-icon></span>
+        <span (click)="share(blog)"><ion-icon name="md-share"></ion-icon></span>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

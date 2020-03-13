@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title>trainers</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="search()">
+          <ion-icon name="search-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <loading *ngIf="isLoading"></loading>
+
+  <div class="container" *ngIf="!isLoading">
+
+    <div *ngIf="trainers?.length > 0; then dataTemplate else noDataTemplate"></div>
+
+    <ng-template #noDataTemplate>
+      <no-data></no-data>
+    </ng-template>
+
+    <ng-template #dataTemplate>
+      <!--Filter by closest trainer-->
+      <div class="trainer-card" *ngFor="let trainer of trainers | orderBy: '+distance_away'">
+        <img [src]="trainer.picture | image: 'url: profile'" (click)="open(trainer)">
+        <div class="card">
+          <div class="desc" (click)="open(trainer)">
+            <h2>{{trainer.fullname}}</h2>
+            <p>{{trainer.gym}}, {{trainer.country}}</p>
+            <p>
+              <ion-icon name="pin"></ion-icon> {{trainer.distance_away | number:'2.1-2'}} km away</p>
+          </div>
+          <div class="more">
+            <p>
+              <ion-icon name="star-outline"></ion-icon> {{trainer.rating}}
+            </p>
+            <ion-fab class="trainer" middle right edge #fab>
+              <button ion-fab mini><ion-icon name="md-more"></ion-icon></button>
+              <ion-fab-list side="left">
+                <button ion-fab (click)="call(trainer, fab)"><ion-icon name="call-outline" color="primary"></ion-icon></button>
+                <button ion-fab (click)="chat(trainer, fab)"><ion-icon name="mail-outline" color="primary"></ion-icon></button>
+                <button ion-fab (click)="calendar(trainer, fab)"><ion-icon name="calendar-outline" color="primary"></ion-icon></button>
+              </ion-fab-list>
+            </ion-fab>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+</ion-content>

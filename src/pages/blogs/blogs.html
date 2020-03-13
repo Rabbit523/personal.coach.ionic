@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="container">
+    <!--toolbar and navigation-->
+    <div class="top" gradient-left box-shadow>
+      <ion-toolbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+        <ion-title>blogs</ion-title>
+        <ion-buttons end>
+          <button ion-button (click)="add()">
+        <ion-icon name="add-outline"></ion-icon>
+      </button>
+          <button ion-button (click)="search()">
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-toolbar>
+        <div class="segments">
+          <div class="segment" [ngClass]="{'active': segment.title === blog_type}" *ngFor="let segment of segments" (click)="segment.click()">{{segment.title}}</div>
+        </div>
+      </ion-toolbar>
+    </div>
+
+    <div class="blog-content">
+      <loading *ngIf="isLoading"></loading>
+
+      <div *ngIf="!isLoading">
+        <div *ngIf="blogs?.length > 0; then dataTemplate else noDataTemplate"></div>
+
+        <ng-template #noDataTemplate>
+          <no-data></no-data>
+        </ng-template>
+
+        <ng-template #dataTemplate>
+          <div [ngSwitch]="blog_type">
+            <food-blog *ngSwitchCase="'food'" [data]="blogs"></food-blog>
+            <fitness-blog *ngSwitchCase="'fitness'" [data]="blogs"></fitness-blog>
+            <lifestyle-blog *ngSwitchCase="'lifestyle'" [data]="blogs"></lifestyle-blog>
+            <food-blog *ngSwitchDefault [data]="blogs"></food-blog>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

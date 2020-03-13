@@ -1,0 +1,63 @@
+trainer {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    .user-image {
+      margin-top: 20px;
+      ion-col {
+        align-self: center;
+        button {
+          height: 3.4em!important;
+          width: 3.4em!important;
+          border-radius: 100%;
+          border: 1px solid color($colors, default);
+          ion-icon {
+            font-size: 4rem;
+          }
+        }
+        .image {
+          position: relative;
+          width: 130px;
+          height: 130px;
+          border-radius: 100%;
+          border: 3px solid color($colors, secondary);
+          text-align: center;
+          margin: 0 auto;
+          padding-top: 2px;
+          img {
+            margin-bottom: 30px;
+            width: 120px;
+            height: 120px;
+            border-radius: 100%; // padding: 10px;
+            // border: 3px solid color($colors, default)
+          }
+        }
+      }
+    }
+    .user-profile {
+      margin-bottom: 30px;
+      h2,
+      p {
+        margin: 5px;
+      }
+      .button {
+        border-radius: 44px !important;
+      }
+    }
+    ion-card {
+      padding: 7px;
+      margin-top:8px;
+      border-radius: 6px;
+      background: color($colors, white);
+      h2{
+          font-size: 1.5rem;
+          font-weight: 500!important;
+      }
+      ion-icon{
+          font-size: 3.6rem;
+      }
+    }
+  }
+}

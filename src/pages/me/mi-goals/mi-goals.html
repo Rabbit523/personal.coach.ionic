@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title>Goals</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-icon class="title" name="person"></ion-icon>Personal Detail
+        <ion-fab top right class="personal">
+          <button ion-fab mini (click)="profile()"><ion-icon name="md-create"></ion-icon></button>
+        </ion-fab>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="info">
+          <p class="label">Fullname</p>
+          <p>{{mi?.fullname? mi.fullname : 'Unknown'}}</p>
+          <p class="label">Address</p>
+          <p>{{mi?.address ? mi.address: 'Unknown'}}</p>
+          <ion-row>
+            <ion-col no-padding>
+              <p class="label">Gender</p>
+              <p>{{mi?.gender ? mi.gender: 'Unknown'}}</p>
+            </ion-col>
+            <ion-col no-padding>
+              <p class="label">Date of Birth</p>
+              <p>{{mi?.dob ? mi.dob: 'Unknown'}}</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-icon class="title" name="heart"></ion-icon>Health Detail
+        <ion-fab top right>
+          <button ion-fab mini (click)="health()"><ion-icon name="md-create"></ion-icon></button>
+        </ion-fab>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="info">
+          <p class="label">Height</p>
+          <p>{{mi?.height? mi.height : 'Unknown'}}</p>
+          <p class="label">Weight</p>
+          <p>{{mi?.weight ? mi.weight: 'Unknown'}}</p>
+          <ion-row>
+            <ion-col no-padding>
+              <p class="label">BMI</p>
+              <p>{{mi?.bmi ? mi.bmi: 'Unknown'}}</p>
+            </ion-col>
+            <ion-col no-padding>
+              <p class="label">Body Fat %</p>
+              <p>{{mi?.bfp ? mi.bfp: 'Unknown'}}</p>
+            </ion-col>
+          </ion-row>
+          <p class="label">Lean Body Mass</p>
+          <p>{{mi?.lbm ? mi.lbm : 'Unknown'}}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

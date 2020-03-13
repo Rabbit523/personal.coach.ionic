@@ -1,0 +1,53 @@
+<ion-content [formGroup]="blog_form" *ngIf="blog_form">
+  <div class="top">
+    <div class="close">
+      <ion-row>
+        <ion-col col-2>
+          <ion-icon name="md-arrow-back" (click)="viewCtrl.dismiss()"></ion-icon>
+        </ion-col>
+        <ion-col col-7>
+          <div class="profile">
+            <img [src]="mi.picture | image: 'url: profile'">
+            <span>{{mi.fullname}}</span>
+          </div>
+        </ion-col>
+        <ion-col col-3 text-right>
+          <ion-icon name="camera" style="padding-right:10px;" (click)="addImages()"></ion-icon>
+        </ion-col>
+      </ion-row>
+
+    </div>
+
+    <div class="content">
+
+      <ion-item>
+        <ion-label floating>Title your post..?</ion-label>
+        <ion-textarea elastic-textarea formControlName="title"></ion-textarea>
+      </ion-item>
+
+    </div>
+  </div>
+  <div class="blog">
+    <div class="blog-type">
+      <p>What is your post about?</p>
+      <div *ngFor="let type of types" (click)="blogType(type)" [ngClass]="{'active': blog?.type === type}">{{type}}</div>
+    </div>
+    <ion-item>
+      <ion-label floating>Enter blog content..?</ion-label>
+      <ion-textarea elastic-textarea formControlName="content"></ion-textarea>
+    </ion-item>
+
+  </div>
+
+  <div class="image" *ngIf="images.length > 0">
+    <ion-slides>
+      <ion-slide *ngFor="let image of images" [style.background-image]="'url(' + image + ')' | image: 'style: placeholder'">
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>
+
+
+<div class="floating">
+  <button ion-button block gradient-left box-shadow (click)="save(blog_form)">Add Post</button>
+</div>

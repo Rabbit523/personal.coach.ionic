@@ -1,0 +1,18 @@
+<ion-content >
+  <div class="container custom-form" *ngIf="searchTitles">
+    <p class="formidable">Search <span>by</span> <button ion-button icon-only clear pull-right (click)="viewCtrl.dismiss()"><ion-icon name="close"></ion-icon></button></p>
+    <form [formGroup]="search_form">
+      <div formArrayName="search">
+      <ion-item *ngFor="let item of search_form.controls.search.controls; let i = index"  [formGroupName]="i">
+        <ion-label fixed>{{searchTitles[i]}}</ion-label>
+        <ion-input type="text" [formControlName]="searchTitles[i]"></ion-input>
+      </ion-item>
+      </div>
+    </form>
+    </div>
+</ion-content>
+
+<div class="floating">
+  <button ion-button block gradient-left (click)="search(search_form)">Search</button>
+  <button ion-button block danger-gradient-left (click)="reset(search_form)">Reset</button>
+</div>

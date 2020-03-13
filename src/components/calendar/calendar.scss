@@ -1,0 +1,169 @@
+  calendar {
+    .header {
+      ion-col {
+        align-self: center;
+        padding: 0 15px;
+        &:first-of-type {
+          text-align: left;
+        }
+        &:last-of-type {
+          text-align: right;
+        }
+        h2 {
+          &.title {
+            color: color($colors, light);
+            font-size: 1.8rem;
+            margin: 0;
+          }
+        }
+        .button {
+          padding-left: 4px;
+          padding-right: 4px;
+          padding-top: 0;
+          padding-bottom: 0;
+          border-radius: 4px;
+          background: transparent;
+          height: 32px;
+          border: 0;
+          font-size: 1.7rem;
+        }
+      }
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      .calendar {
+        &.light {
+          .header {
+            box-shadow: none !important;
+            background: color($colors, secondary) !important;
+          }
+          .weeks {
+            background: color($colors, secondary) !important;
+            ion-col {
+              color: color($colors, light) !important;
+            }
+          }
+          .weekdays ion-col {
+            color: color($colors, dark) !important;
+            .today {
+              color: color($colors, light)!important;
+              border: 1px solid color($colors, secondary)!important;
+              background: color($colors, secondary)!important;
+            }
+            .different-month {
+              color: lighten(color($colors, default), 20%);
+            }
+            .selected {
+              border-radius: 100%;
+              border: 1px solid color($colors, primary);
+            }
+          }
+        }
+        padding-bottom: 10px;
+        &.dark {
+          background: color($colors, primary) !important;
+          .header {
+            background: transparent !important;
+            .bar-button-ios {
+              padding-left: 14px;
+              padding-right: 14px;
+            }
+            .bar-button-ios[menutoggle] {
+              padding-left: 1px;
+              padding-right: 1px;
+            }
+          }
+        }
+        .weeks {
+          ion-col {
+            text-align: center;
+            font-size: 1.6rem;
+            color: color($colors, light);
+          }
+        }
+        .weekdays {
+          ion-col {
+            text-align: center;
+            padding: 0;
+            height: 42px;
+            color: color($colors, light);
+            span {
+              display: inline-block;
+              height: 30px;
+              width: 30px;
+              line-height: 30px;
+              font-weight: 300;
+            }
+            .event-badge {
+              position: absolute;
+              height: 10px;
+              width: 10px;
+              color: color($colors, light);
+              background: darken( color($colors, stable), 60%);
+              line-height: 10px;
+              border-radius: 100%;
+              font-size: 1rem;
+              margin-left: 20px;
+            }
+            .today {
+              border-radius: 100%;
+              color: color($colors, primary);
+              border: 1px solid color($colors, light);
+              background: color($colors, white);
+            }
+            .different-month {
+              color: lighten(color($colors, default), 20%);
+            }
+            .selected {
+              border-radius: 100%;
+              border: 1px solid color($colors, white);
+            }
+            .calendar-events {
+              display: block;
+              top: -5px;
+              position: relative;
+            }
+            .has-events {
+              padding: 0 2px;
+              height: auto;
+              width: auto;
+              line-height: 0;
+            }
+            .event-ticks {
+              width: 4px;
+              height: 4px;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+      .list {
+        .scroll {
+          overflow-y: auto;
+          position: relative;
+          height: 50vw;
+          margin: 5px 0;
+          ion-card {
+            ion-item {
+              border-left: 5px solid;
+              padding-left: 20px;
+              margin: 10px 0;
+              ion-label {
+                margin: 3px;
+              }
+              h2 {
+                font-size: 1.3rem;
+                font-weight: 400 !important;
+              }
+              p {
+                font-size: 1.4rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,22 @@
+<div class="no-data">
+  <div [ngSwitch]="options.image">
+    <div *ngSwitchCase="'cart'">
+      <img src="./assets/empty-cart.png" alt="">
+    </div>
+    <div *ngSwitchCase="'box'">
+      <img src="./assets/empty-box.png" alt="">
+    </div>
+    <div *ngSwitchDefault>
+      <img src="./assets/empty-box.png" alt="">
+    </div>
+  </div>
+
+  <p>{{options?.text}}</p>
+  <ion-row *ngIf="button">
+    <ion-col text-center>
+      <button ion-button [color]="button.color" (click)="onClick()">{{button.text}}</button>
+    </ion-col>
+  </ion-row>
+  
+
+</div>

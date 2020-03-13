@@ -1,0 +1,33 @@
+<ng-container *ngIf="mi">
+  <ion-card class="blog-card" *ngFor="let blog of data | orderBy: '-created_at'">
+
+    <ion-row>
+      <ion-col col-4 *ngIf="blog?.images?.length > 0" (click)="open(blog)" [style.background-image]="'url(' + blog?.images[0] + ')' | image: 'style: placeholder'"></ion-col>
+      <ion-col>
+        <p (click)="open(blog)">{{blog.content| slice: 0: 140}}</p>
+
+        <ion-row class="actions">
+          <ion-col col-3 class="date">{{blog.created_at | amTimeAgo}}</ion-col>
+          <ion-col text-right>
+            <span (click)="like(blog)">
+              <ion-icon [name]="likedByUser(blog) ? 'heart' : 'heart-outline'"></ion-icon>{{blog?.likes_count > 0 ?
+              blog?.likes_count : ''}}
+            </span>
+            <span (click)="comment(blog)">
+              <ion-icon name="quote-outline"></ion-icon>{{blog?.comments_count > 0 ? blog?.comments_count : ''}}
+            </span>
+            <span (click)="bookmark(blog)">
+              <ion-icon [name]="bookmarked(blog) ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+            </span>
+            <span (click)="share(blog)">
+              <ion-icon name="md-share"></ion-icon>
+            </span>
+            <span (click)="delete(blog)" *ngIf="blog?.user?.uid === mi?.uid">
+              <ion-icon name="trash" color="danger"></ion-icon>
+            </span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ng-container>

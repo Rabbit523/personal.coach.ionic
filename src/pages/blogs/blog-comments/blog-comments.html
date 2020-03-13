@@ -1,0 +1,59 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button (click)="search()">
+          <ion-icon name="search-outline"></ion-icon>
+      </button>
+    <ion-title>Comments</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="viewCtrl.dismiss()">
+          <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <loading *ngIf="isLoading"></loading>
+
+  <div class="container" *ngIf="!isLoading">
+
+    <div *ngIf="comments?.length > 0; then dataTemplate else noDataTemplate"></div>
+
+    <ng-template #noDataTemplate>
+      <no-data></no-data>
+    </ng-template>
+
+    <ng-template #dataTemplate>
+      <!--Filter by closest trainer-->
+      <div class="user-card" *ngFor="let comment of comments | orderBy: '+date'">
+        <div class="image">
+          <img [src]="comment.picture | image: 'url: profile'">
+        </div>
+        <div class="desc">
+          <div class="info">
+            <h2>{{comment.fullname}}</h2>
+            <p>{{comment.text}}</p>
+            <p class="date">{{comment.date | amTimeAgo}}</p>
+          </div>
+        </div>
+        <div class="actions" *ngIf="comment.uid === mi.uid" (click)="delete(comment)">
+          <ion-icon name="close"></ion-icon>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="custom-form">
+    <ion-item>
+      <ion-input name="message" placeholder="Type comment here..." [formControl]="message"></ion-input>
+    </ion-item>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="send(message.value)">
+         <ion-icon name="send" color="primary" item-left></ion-icon> Send
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

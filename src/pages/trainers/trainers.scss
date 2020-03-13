@@ -1,0 +1,105 @@
+page-trainers {
+  .container {
+    .trainer-card {
+      display: block;
+      height: 100px;
+      max-height: 130px;
+      position: relative;
+      margin: 10px 0;
+      img {
+        position: absolute;
+        top: -12px;
+        float: left;
+        display: block;
+        border-radius: 100%;
+        width: 103px;
+        border: 3px solid color($colors, light);
+      }
+      .card {
+        margin-top: 0px;
+        background: color($colors, white);
+        border: 1px solid color($colors, light);
+        border-radius: 16px;
+        width: 80%;
+        float: right;
+        padding: 8px 10px 2px 46px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-wrap: break-word;
+        .desc {
+          display: inline-block;
+          width: 75%;
+          h2,
+          p {
+            margin: 1px 0 0;
+          }
+          h2 {
+            font-size: 1.6rem;
+            font-weight: 600 !important;
+            color: color($colors, dark);
+          }
+          p {
+            font-size: 1.2rem;
+            color: color($colors, stable);
+          }
+          .distance {
+            font-size: 1.1rem;
+            color: color($colors, default);
+          }
+        }
+        .more {
+          float: right;
+          display: flex;
+          flex-direction: column;
+          width: 20%;
+          z-index: 99;
+          background: color($colors, white);
+          text-align: right;
+          justify-content: center;
+          height: inherit;
+          p {
+            margin: 0;
+            font-size: 1.6rem;
+            color: color($colors, primary);
+          }
+          .actions {
+            padding: 8px 8px 0;
+            font-size: 2.6rem;
+          }
+        }
+      }
+    }
+  }
+
+p,h2 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+}
+
+
+ion-fab.trainer {
+  margin-top: -16px !important;
+  right: 6px!important;
+  .fab {
+    background: transparent!important;
+    width: 25px !important;
+    color: black;
+    margin: 0 !important;
+    z-index: 99;
+  }
+  ion-fab-list[side=left] {
+    background: color($colors, light);
+    padding: 0 36px 0 6px;
+    border-radius: 10px;
+    height: 25px !important;
+    font-size: 1rem!important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    min-height: 40px !important;
+    button {
+      padding: 0 20px;
+    }
+  }
+}

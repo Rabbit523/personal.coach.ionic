@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title>Notifications</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="search()">
+          <ion-icon name="search-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <loading *ngIf="isLoading"></loading>
+
+  <div class="container" *ngIf="!isLoading">
+
+    <div *ngIf="notifications?.length > 0; then dataTemplate else noDataTemplate"></div>
+
+    <ng-template #noDataTemplate>
+      <no-data [options]="{text:'You have no Notifications, create one from schedule page'}"></no-data>
+    </ng-template>
+
+    <ng-template #dataTemplate>
+      <ion-card *ngFor="let item of notifications">
+        <ion-row>
+          <ion-col col-3 [style.border-left-color]="item.color">
+            {{item.start | date: 'dd'}}
+            <p>{{item.start | date: 'MMM'}}</p>
+          </ion-col>
+          <ion-col>
+            <h2>{{item.title}}</h2>
+            <p>{{item.start_time | date:'shortTime'}} - {{item.end_time| date:'shortTime'}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ng-template>
+  </div>
+</ion-content>

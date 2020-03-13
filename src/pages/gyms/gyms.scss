@@ -1,0 +1,108 @@
+  page-gyms {
+    .container {
+      .image,
+      .desc {
+        margin: 10px;
+        min-height: 160px;
+        position: relative;
+        width: calc(50% - 32px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .image {
+        float: left;
+        background: lighten(color($colors, secondary), 10%);
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        padding: 10px 20px;
+        img {
+          width: 80%;
+        }
+        p {
+          margin: 5px 0 0;
+          font-size: 1.2rem;
+          ion-icon {
+            margin-right: 5px;
+          }
+        }
+      }
+      .desc {
+        float: right;
+        background: color($colors, light);
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        padding: 0 10px 5px;
+        .info {
+          text-align: right;
+          h2 {
+            margin: 5px 0;
+            font-size: 1.8rem;
+            font-weight: 500 !important;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+          p {
+            margin: 0;
+          }
+          .opened,
+          .closed {
+            font-size: .9rem;
+            padding: 2px 5px;
+            border-radius: 13px;
+          }
+          .opened {
+            background: color($colors, primary);
+            color: color($colors, light);
+          }
+          .closed {
+            color: color($colors, primary);
+            background: lighten(color($colors, default), 10);
+          }
+        }
+      }
+      .image:after,
+      .desc:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 0;
+        height: 0;
+      }
+      .image:after {
+        left: 100%;
+        border-top: 160px solid lighten(color($colors, secondary), 10%);
+        border-right: 50px solid transparent;
+      }
+      .desc:before {
+        right: 100%;
+        border-bottom: 160px solid color($colors, light);
+        border-left: 50px solid transparent;
+      }
+    }
+    ion-fab.gym  {
+      margin-top: -4px !important;
+      left: 6px!important;
+      .fab {
+        background: transparent!important;
+        width: 25px !important;
+        color: black;
+        margin: 0 !important;
+        z-index: 99;
+      }
+      ion-fab-list[side=right] {
+        background: color($colors, light);
+        padding: 0 6px 0 36px;
+        border-radius: 6px;
+        height: 25px !important;
+        font-size: 1rem!important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        min-height: 36px !important;
+        button {
+          padding: 0 20px;
+        }
+      }
+    }
+  }

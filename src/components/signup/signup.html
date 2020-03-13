@@ -1,0 +1,38 @@
+<ion-content>
+  <div class="container custom-form">
+    <p class="formidable">sign up  <button ion-button icon-only clear pull-right (click)="viewCtrl.dismiss()"><ion-icon name="close"></ion-icon></button></p>
+    <form [formGroup]="signup_form">
+      <ion-item>
+        <ion-label fixed>
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-label>
+        <ion-input type="text" formControlName="displayName" placeholder="Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>
+          <ion-icon name="mail-outline"></ion-icon>
+        </ion-label>
+        <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>
+          <ion-icon name="lock-outline"></ion-icon>
+        </ion-label>
+        <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <ion-row class="remember-me">
+        <ion-col text-left no-padding>
+          <p (click)="rememberMe = !rememberMe">
+            <ion-icon *ngIf="rememberMe" name="checkmark-circle-outline"></ion-icon>
+            <ion-icon *ngIf="!rememberMe" name="radio-button-off-outline"></ion-icon>
+            Remember me?</p>
+        </ion-col>
+      </ion-row>
+    </form>
+    <button ion-button block gradient-left (click)="signUp(signup_form)" >SIGN UP</button>
+    <button ion-button gradient-left box-shadow block (click)="googleSignIn()">Sign Up with Google</button>
+  </div>
+</ion-content>
+<ion-footer>
+  <p text-center>Already have an account? <span class="daring" (click)="login()">Login</span></p>
+</ion-footer>

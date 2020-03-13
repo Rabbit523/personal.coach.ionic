@@ -1,0 +1,39 @@
+<ng-container *ngIf="mi">
+
+  <div class="block" *ngFor="let blog of data | orderBy: '-created_at'">
+    <div class="profile" [style.background-image]="'url(' + blog?.user?.picture + ')' | image: 'style: profile'">
+    </div>
+    <div class="description" (click)="open(blog)">
+      <ion-row class="header">
+        <ion-col col-7>{{blog.user.fullname}}</ion-col>
+        <ion-col col-5 text-right>{{blog.created_at | amTimeAgo}}</ion-col>
+      </ion-row>
+      <div class="content">
+        {{blog.content}}
+        <div *ngIf="blog?.images?.length > 0" class="image" [style.background-image]="'url(' + blog?.images[0] + ')' | image: 'style: placeholder'">
+        </div>
+      </div>
+    </div>
+    <ion-row>
+      <ion-col text-right>
+        <span (click)="like(blog)">
+          <ion-icon [name]="likedByUser(blog) ? 'heart' : 'heart-outline'"></ion-icon>{{blog?.likes_count > 0 ?
+          blog?.likes_count : ''}}
+        </span>
+        <span (click)="comment(blog)">
+          <ion-icon name="quote-outline"></ion-icon>{{blog?.comments_count > 0 ? blog?.comments_count : ''}}
+        </span>
+        <span (click)="bookmark(blog)">
+          <ion-icon [name]="bookmarked(blog) ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+        </span>
+        <span (click)="share(blog)">
+          <ion-icon name="md-share"></ion-icon>
+        </span>
+        <span (click)="delete(blog)" *ngIf="blog?.user?.uid === mi.uid">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </span>
+      </ion-col>
+    </ion-row>
+
+  </div>
+</ng-container>

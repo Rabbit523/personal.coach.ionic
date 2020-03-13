@@ -1,0 +1,64 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <ion-title>Edit Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <loading *ngIf="isLoading"></loading>
+  <div class="container custom-floating-form" *ngIf="!isLoading">
+    <form [formGroup]="profile_form">
+      <div class="user-image">
+        <img [src]="user?.picture | image: 'url:profile'" (click)="addImage()" greydient-left>
+      </div>
+      <div class="scroll">
+        <ion-item>
+          <ion-label floating>Full name</ion-label>
+          <ion-input type="text" formControlName="fullname"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Gender</ion-label>
+          <ion-select formControlName="gender">
+            <ion-option [value]="item.value" *ngFor="let item of genders">{{item.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Date of Birth</ion-label>
+          <ion-datetime type="text" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" formControlName="dob"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Address</ion-label>
+          <ion-textarea elastic-textarea formControlName="address"></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>City</ion-label>
+          <ion-input type="text" formControlName="city"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Country</ion-label>
+          <ion-input type="text" formControlName="country"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Abut Me</ion-label>
+          <ion-textarea elastic-textarea formControlName="about"></ion-textarea>
+        </ion-item>
+
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<div class="floating">
+  <button ion-button block gradient-left box-shadow (click)="save(profile_form)" [disabled]="!profile_form.valid">Update Profile</button>
+</div>
